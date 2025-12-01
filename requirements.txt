@@ -1,0 +1,6 @@
+mindnlp==0.5.1
+numpy
+gradio
+openai
+tqdm
+

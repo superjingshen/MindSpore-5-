@@ -1,0 +1,1 @@
+pip install -r Triage_project/requirements.txt

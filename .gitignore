@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
+# Models & Weights
+# output/ is now allowed
+*.ckpt
+*.mindir
+# *.safetensors # Allowed for LoRA adapters
+*.pt
+*.pth
+
+# Logs
+*.log
+
+# Secrets
+.env
