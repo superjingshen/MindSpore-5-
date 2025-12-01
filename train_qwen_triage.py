@@ -82,7 +82,7 @@ def main():
     
     # NPU可用性检查
     try:
-        _ = ms.Tensor([1.0], dtype=ms.float32)
+        _ = ms.Tensor([1.0], dtype=ms.float32).to('npu:0')
     except:
         pass # 忽略这里的报错，后续会自动处理
 
@@ -93,6 +93,8 @@ def main():
     dataset = make_dataset(tokenizer, args.dataset_path, args.max_length, args.batch_size, args.num_workers)
     
     model = AutoModelForCausalLM.from_pretrained(args.model_name_or_path, ms_dtype=dtype, cache_dir=args.cache_dir, use_cache=False)
+    print("正在将模型移动到 NPU...")
+    model = model.to('npu:0')
     model.gradient_checkpointing_enable()
     
     cfg = LoraConfig(task_type=TaskType.CAUSAL_LM, target_modules=[x.strip() for x in args.target_modules.split(",") if x.strip()], inference_mode=False, r=args.lora_r, lora_alpha=args.lora_alpha, lora_dropout=args.lora_dropout)
@@ -127,9 +129,9 @@ def main():
     for epoch in range(args.epochs):
         for batch in dataset.create_tuple_iterator(output_numpy=True):
             # 将 numpy 数据转为 Tensor 并移动到 NPU
-            input_ids = ms.Tensor(batch[0], dtype=ms.int32)
-            attention_mask = ms.Tensor(batch[1], dtype=ms.int32)
-            labels = ms.Tensor(batch[2], dtype=ms.int32)
+            input_ids = ms.Tensor(batch[0], dtype=ms.int32).to('npu:0')
+            attention_mask = ms.Tensor(batch[1], dtype=ms.int32).to('npu:0')
+            labels = ms.Tensor(batch[2], dtype=ms.int32).to('npu:0')
             
             # ===============================================
             # OOM 捕获与跳过
