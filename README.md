@@ -20,7 +20,7 @@
 
 ### Tested Environments
 
-*   Python 3.9
+*   Python 3.10
 *   MindSpore 2.7.0 (Ascend)
 *   MindNLP 0.5.1
 *   Ascend 910B NPU
