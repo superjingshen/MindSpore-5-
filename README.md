@@ -93,3 +93,6 @@ python test_acc.py
 | `test_acc.py` | 自动化测试与评估脚本 |
 | `gradio_triage_app.py` | Web 演示应用 |
 | `requirements.txt` | 项目依赖 |
+## 图片展示
+<img width="2059" height="1009" alt="image" src="https://github.com/user-attachments/assets/69810a61-e0df-466f-a530-7ee3ddb7ef33" />
+
