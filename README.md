@@ -91,6 +91,7 @@ python test_acc.py
 | `train_qwen_triage.py` | 模型训练脚本 (MindNLP + LoRA) |
 | `reasoning.py` | 推理核心类 (加载模型、推理逻辑) |
 | `test_acc.py` | 自动化测试与评估脚本 |
+| `dataset/test.txt` | 测试数据文件（评估/验收用的测试样例，供 `test_acc.py` 读取） |
 | `gradio_triage_app.py` | Web 演示应用 |
 | `requirements.txt` | 项目依赖 |
 ## 图片展示
